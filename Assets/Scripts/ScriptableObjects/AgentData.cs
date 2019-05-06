@@ -19,6 +19,4 @@ public class AgentData : ScriptableObject
     public float Awarness = .5f;
     public eAgentAttributes Attributes;
     public List<GameObject> Items;
-
-
 }
