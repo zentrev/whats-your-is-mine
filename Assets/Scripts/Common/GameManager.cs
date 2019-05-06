@@ -29,10 +29,8 @@ public class GameManager : Singleton<GameManager>
             case eSet.NONE:
                 break;
             case eSet.MENU:
-                Cursor.visible = true;
                 break;
             case eSet.GAME:
-                Cursor.visible = false;
                 break;
             default:
                 break;
