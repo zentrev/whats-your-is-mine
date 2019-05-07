@@ -20,5 +20,6 @@ public class AgentBehavior : MonoBehaviour
     void Update()
     {
         // AI and behavior things
+
     }
 }

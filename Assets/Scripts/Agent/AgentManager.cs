@@ -110,6 +110,5 @@ public class AgentManager : Singleton<AgentManager>
 
     void Update()
     {
-
     }
 }
