@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float money = 0.0f;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetAxis("Interact") > 0)
         {
-
+            money += other.gameObject.GetComponent<AgentData>().Value;
         }
     }
 }
