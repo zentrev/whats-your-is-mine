@@ -77,7 +77,6 @@ public class AgentManager : Singleton<AgentManager>
         for(int i = 0; i < m_agentSpawners.Count; i++)
         {
             AgentSpawner spawn = m_agentSpawners[i];
-            Debug.Log("SPAWN COUNT: " + spawn.count);
             while(spawn.count > 0)
             {
                 float wheight = Random.Range(0.0f, agentWheights);
@@ -85,7 +84,6 @@ public class AgentManager : Singleton<AgentManager>
                 {
                     LevelAgents pAgent = m_posibleAgents[j];
 
-                    Debug.Log(pAgent.agentData + " : " + pAgent.inLevel);
                     if (!pAgent.singleton || (pAgent.singleton && !pAgent.inLevel))
                     {
                         wheight -= pAgent.agentProbobiltiy;
@@ -112,6 +110,6 @@ public class AgentManager : Singleton<AgentManager>
 
     void Update()
     {
-        
+
     }
 }
