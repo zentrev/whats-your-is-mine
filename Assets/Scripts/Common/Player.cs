@@ -29,8 +29,29 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        RaycastHit hit;
+        m_onGround = OnGround(m_groundDistance, out hit);
+        if (m_onGround)
+        {
+            m_velocity.y = 0.0f;
+        }
         m_velocity.x = Input.GetAxis("Horizontal") * m_speed;
         m_rb.velocity = m_velocity;
+        m_jumpTimer -= Time.deltaTime;
+        if (m_onGround && m_jumpTimer <= 0.0f)
+        {
+            if (Input.GetButtonDown("Jump") && m_onGround)
+            {
+                m_velocity = m_velocity + Vector3.up * m_jumpForce;
+                m_rb.velocity = m_velocity;
+                m_jumpTimer = 0.2f;
+            }
+        }
+        else
+        {
+            m_velocity.y -=  .50f;
+        }
+        
 
         if (Input.GetAxis("Interact") > 0 && collided)
         {
@@ -38,19 +59,7 @@ public class Player : MonoBehaviour
             //money += collider.gameObject.GetComponent<AgentData>().Value;
             //stolenItems.AddRange(collider.gameObject.GetComponent<AgentData>().Items);
         }
-        RaycastHit hit;
-        m_onGround = OnGround(m_groundDistance, out hit);
-
-        m_jumpTimer = m_jumpTimer - Time.deltaTime;
-        if (m_onGround && m_jumpTimer <= 0.0f)
-        {
-            if (Input.GetButtonDown("Fire1") && m_onGround)
-            {
-                m_velocity = m_velocity + Vector3.up * m_jumpForce;
-                m_rb.velocity = m_velocity;
-                m_jumpTimer = 0.2f;
-            }
-        }
+       
     }
 
         private void OnTriggerEnter(Collider other)
