@@ -6,6 +6,9 @@ public class AgentBehavior : MonoBehaviour
 {
     [SerializeField] AgentData m_agentData;
 
+    private bool wondering = true;
+
+
     public AgentData AgentData { get => m_agentData; set => m_agentData = value; }
 
     void Start()
@@ -20,7 +23,6 @@ public class AgentBehavior : MonoBehaviour
 
     void Update()
     {
-        // AI and behavior things
 
     }
 }

@@ -13,7 +13,7 @@ public class AgentData : ScriptableObject
         KEYHOLDER   = (1 << 1),
         GUARD       = (1 << 2),
         DECOY       = (1 << 3),
-        ROYALTY     = (1 << 4),
+        CAPTIN      = (1 << 4),
     }
 
     public float Value = 10.0f;

@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3934781663848556785
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3934781663848556784}
+  - component: {fileID: 3934781663848556787}
+  m_Layer: 0
+  m_Name: AgentManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3934781663848556784
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3934781663848556785}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3934781663848556787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3934781663848556785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cc1f1b4bebf7214db7709c50f39d2ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPersistant: 0
+  m_basicAgent: {fileID: 6457518615151748069, guid: e634b73634e420040991dfe46795c8c5,
+    type: 3}
+  m_guardAgent: {fileID: 3479228381332771018, guid: c93bca0423c826644b505d47ecaf2bdb,
+    type: 3}
+  m_fixedAgents:
+  - agentSpawner:
+      transform: {fileID: 0}
+      count: 1
+    agentData: {fileID: 11400000, guid: 77273d186e1b5434b8cb14e829a68996, type: 2}
+  m_posibleAgents:
+  - agentData: {fileID: 11400000, guid: 142ff77ff78df304a99b90c138a3387c, type: 2}
+    forceAgent: 0
+    agentProbobiltiy: 0.4
+    singleton: 0
+    inLevel: 0
+  - agentData: {fileID: 11400000, guid: f976e23eb8c544948981c9bf733ccb05, type: 2}
+    forceAgent: 0
+    agentProbobiltiy: 0.6
+    singleton: 0
+    inLevel: 0
+  m_agentSpawners:
+  - transform: {fileID: 0}
+    count: 10
+  - transform: {fileID: 0}
+    count: 10
+  - transform: {fileID: 0}
+    count: 10

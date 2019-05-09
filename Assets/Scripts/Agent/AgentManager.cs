@@ -106,7 +106,6 @@ public class AgentManager : Singleton<AgentManager>
                 }
             }
             m_agentSpawners[i] = spawn;
-
         }
     }
 
