@@ -9,8 +9,6 @@ public class DemoInspector : Editor
     {
         AgentData agent = (AgentData)target;
 
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("AgentObject"));
-
         EditorGUILayout.PropertyField(serializedObject.FindProperty("Value"));
         agent.Awarness = EditorGUILayout.Slider("Awarness", agent.Awarness, 0.0f, 1.0f);
         agent.Attributes = (AgentData.eAgentAttributes) EditorGUILayout.EnumFlagsField("Attributes", agent.Attributes);
