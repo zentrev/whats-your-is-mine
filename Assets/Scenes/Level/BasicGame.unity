@@ -359,7 +359,7 @@ GameObject:
   - component: {fileID: 663762465}
   - component: {fileID: 663762464}
   - component: {fileID: 663762463}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -911,8 +911,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 1.5}
-  m_Center: {x: 0, y: 0, z: 0.3}
+  m_Size: {x: 1, y: 1.7249287, z: 1.5}
+  m_Center: {x: 0, y: 0.01, z: 0.29999995}
 --- !u!54 &2114946313
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -927,7 +927,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!136 &2114946314
 CapsuleCollider:
@@ -940,7 +940,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2
+  m_Height: 2.051907
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2114946315
@@ -1002,10 +1002,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_speed: 15
   m_rotateSpeed: 1
-  m_groundDistance: 0.2
-  m_jumpForce: 1
+  m_groundDistance: 1.2
+  m_jumpForce: 6
   m_layerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   money: 0
   stolenItems: []
