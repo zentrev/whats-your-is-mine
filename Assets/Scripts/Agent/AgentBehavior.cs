@@ -6,6 +6,8 @@ public class AgentBehavior : MonoBehaviour
 {
     [SerializeField] AgentData m_agentData;
 
+    public AgentData AgentData { get => m_agentData; set => m_agentData = value; }
+
     void Start()
     {
         
@@ -13,8 +15,8 @@ public class AgentBehavior : MonoBehaviour
 
     public void Init(AgentData agentData)
     {
-        m_agentData = agentData;
-        // do starting things
+        AgentData = Instantiate(agentData);
+
     }
 
     void Update()

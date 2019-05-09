@@ -9,6 +9,7 @@ public class AgentData : ScriptableObject
     [System.Flags]
     public enum eAgentAttributes
     {
+        NONE        = (1 << 0),
         KEYHOLDER   = (1 << 1),
         GUARD       = (1 << 2),
         DECOY       = (1 << 3),
