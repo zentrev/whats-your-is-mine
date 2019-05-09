@@ -9,12 +9,14 @@ public class AgentData : ScriptableObject
     [System.Flags]
     public enum eAgentAttributes
     {
+        NONE        = (1 << 0),
         KEYHOLDER   = (1 << 1),
         GUARD       = (1 << 2),
         DECOY       = (1 << 3),
         ROYALTY     = (1 << 4),
     }
-    
+
+    public GameObject AgentObject;    
     public float Value = 10.0f;
     public float Awarness = .5f;
     public eAgentAttributes Attributes;
