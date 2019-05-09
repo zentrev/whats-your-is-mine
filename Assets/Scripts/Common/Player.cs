@@ -9,8 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] [Range(0.0f, 5.0f)] float m_groundDistance = 0.2f;
     [SerializeField] [Range(0.0f, 50.0f)] float m_jumpForce = 1.0f;
     [SerializeField] LayerMask m_layerMask;
-
-
+    [SerializeField] GameObject m_minigamePanel = null;
 
     public float money = 0.0f;
     public List<GameObject> stolenItems = new List<GameObject>();
@@ -25,6 +24,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         m_rb = GetComponent<Rigidbody>();
+        m_minigamePanel.SetActive(false);
     }
 
     void Update()
@@ -59,8 +59,13 @@ public class Player : MonoBehaviour
             money += collider.gameObject.GetComponent<AgentBehavior>().AgentData.Value;
             Debug.Log("$"+money);
             stolenItems.AddRange(collider.gameObject.GetComponent<AgentBehavior>().AgentData.Items);
+            m_minigamePanel.SetActive(true);
         }
-       
+        if (Input.GetKeyDown(KeyCode.LeftShift)&&!collided)
+        {
+            m_minigamePanel.SetActive(false);
+        }
+
     }
 
         private void OnTriggerEnter(Collider other)
