@@ -53,11 +53,12 @@ public class Player : MonoBehaviour
         }
         
 
-        if (Input.GetAxis("Interact") > 0 && collided)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && collided)
         {
             Debug.Log("Steal");
-            //money += collider.gameObject.GetComponent<AgentData>().Value;
-            //stolenItems.AddRange(collider.gameObject.GetComponent<AgentData>().Items);
+            money += collider.gameObject.GetComponent<AgentBehavior>().AgentData.Value;
+            Debug.Log("$"+money);
+            stolenItems.AddRange(collider.gameObject.GetComponent<AgentBehavior>().AgentData.Items);
         }
        
     }
