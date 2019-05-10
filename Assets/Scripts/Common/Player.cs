@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
     [SerializeField] [Range(0.0f, 5.0f)] float m_groundDistance = 0.2f;
     [SerializeField] [Range(0.0f, 50.0f)] float m_jumpForce = 1.0f;
     [SerializeField] LayerMask m_layerMask;
-    [SerializeField] GameObject m_minigamePanel = null;
 
     public float money = 0.0f;
     public List<GameObject> stolenItems = new List<GameObject>();
@@ -20,11 +19,10 @@ public class Player : MonoBehaviour
     bool m_onGround = true;
     Vector3 m_groundNormal;
     float m_jumpTimer = 0.0f;
-    Collider collider = null;
+
     void Start()
     {
         m_rb = GetComponent<Rigidbody>();
-        m_minigamePanel.SetActive(false);
     }
 
     void Update()
@@ -51,32 +49,25 @@ public class Player : MonoBehaviour
         {
             m_velocity.y -=  .50f;
         }
-        
-
-        if (Input.GetKeyDown(KeyCode.LeftShift) && collided)
-        {
-            Debug.Log("Steal");
-            money += collider.gameObject.GetComponent<AgentBehavior>().AgentData.Value;
-            Debug.Log("$"+money);
-            stolenItems.AddRange(collider.gameObject.GetComponent<AgentBehavior>().AgentData.Items);
-            m_minigamePanel.SetActive(true);
-        }
-        if (Input.GetKeyDown(KeyCode.LeftShift)&&!collided)
-        {
-            m_minigamePanel.SetActive(false);
-        }
 
     }
 
-        private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        collider = other;
         collided = true;
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && other.GetComponent<AgentBehavior>() != null)
+        {
+            Debug.Log("Steal");
+            money += other.gameObject.GetComponent<AgentBehavior>().AgentData.Value;
+            Debug.Log("$" + money);
+            stolenItems.AddRange(other.gameObject.GetComponent<AgentBehavior>().AgentData.Items);
+            MiniGameController.Instance.OpenMiniGame();
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        collider = null;
         collided = false;
     }
 
