@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] [Range(0.0f, 5.0f)] float m_groundDistance = 0.2f;
     [SerializeField] [Range(0.0f, 50.0f)] float m_jumpForce = 1.0f;
     [SerializeField] LayerMask m_layerMask;
+    [SerializeField] PlayerData m_playerData = null;
 
     public float money = 0.0f;
     public List<GameObject> stolenItems = new List<GameObject>();
@@ -19,6 +20,8 @@ public class Player : MonoBehaviour
     bool m_onGround = true;
     Vector3 m_groundNormal;
     float m_jumpTimer = 0.0f;
+
+    public PlayerData PlayerData { get => m_playerData; set => m_playerData = value; }
 
     void Start()
     {
