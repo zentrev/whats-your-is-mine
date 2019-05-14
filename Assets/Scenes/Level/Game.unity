@@ -1396,6 +1396,7 @@ GameObject:
   - component: {fileID: 604234072}
   - component: {fileID: 604234071}
   - component: {fileID: 604234070}
+  - component: {fileID: 604234073}
   m_Layer: 5
   m_Name: PurchaseButton1
   m_TagString: Untagged
@@ -1468,7 +1469,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 604234071}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 604234073}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &604234071
@@ -1508,6 +1520,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 604234068}
   m_CullTransparentMesh: 0
+--- !u!114 &604234073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604234068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b2a6b771e2bef241aa6cd29aedff702, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_playerData: {fileID: 0}
 --- !u!1 &658624857
 GameObject:
   m_ObjectHideFlags: 0
@@ -1823,7 +1848,7 @@ GameObject:
   - component: {fileID: 973970107}
   - component: {fileID: 973970106}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Money
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2164,6 +2189,7 @@ GameObject:
   - component: {fileID: 1036289153}
   - component: {fileID: 1036289152}
   - component: {fileID: 1036289151}
+  - component: {fileID: 1036289154}
   m_Layer: 5
   m_Name: Shop
   m_TagString: Untagged
@@ -2251,6 +2277,20 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1036289154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036289149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 356f53ebc9ae63049892969a699be68b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_playerData: {fileID: 11400000, guid: 44c59e4a05184744a85a5812aae33ede, type: 2}
+  m_moneyText: {fileID: 973970106}
 --- !u!1 &1065132221
 GameObject:
   m_ObjectHideFlags: 0
