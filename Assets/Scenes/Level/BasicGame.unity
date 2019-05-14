@@ -906,6 +906,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPersistant: 0
   m_player: {fileID: 2114946317}
+  m_agentData: {fileID: 0}
   m_miniGamePanle: {fileID: 314919005}
 --- !u!4 &1050927824
 Transform:
@@ -1428,5 +1429,6 @@ MonoBehaviour:
   m_layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  m_playerData: {fileID: 0}
   money: 0
   stolenItems: []
