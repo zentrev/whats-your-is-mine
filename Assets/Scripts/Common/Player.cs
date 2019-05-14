@@ -66,6 +66,7 @@ public class Player : MonoBehaviour
             Debug.Log("$" + money);
             stolenItems.AddRange(other.gameObject.GetComponent<AgentBehavior>().AgentData.Items);
             MiniGameController.Instance.OpenMiniGame();
+            MiniGameController.Instance.m_agentData = other.gameObject.GetComponent<AgentBehavior>().AgentData;
         }
     }
 
