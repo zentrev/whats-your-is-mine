@@ -35,9 +35,10 @@ public class MiniGameController : Singleton<MiniGameController>
     public void OpenMiniGame()
     {
         m_miniGamePanle.SetActive(true);
+        stopWatch = new Stopwatch();
         stopWatch.Start();
         timeMultiplier = 1 - m_agentData.Awarness;
-        timeMultiplier += 10;
+        timeMultiplier *= 10;
         timeMultiplier *= 1000;
     }
 

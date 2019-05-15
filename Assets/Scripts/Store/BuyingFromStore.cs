@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BuyingFromStore : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class BuyingFromStore : MonoBehaviour
         }
     }
 
-    public void OnButtonClick(TMPro cost, TMPro )
+    public void OnButtonClick(TextMeshProUGUI cost, TextMeshProUGUI thing)
     {
 
     }
