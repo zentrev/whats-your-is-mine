@@ -40,11 +40,14 @@ public class MiniGameController : Singleton<MiniGameController>
         m_miniGamePanle.SetActive(true);
         timeSpent = 10 * (m_agentData.Awarness);
         inGame = true;
+        m_player.inMinigame = true;
     }
 
     public void CloseMiniGame()
     {
         m_miniGamePanle.SetActive(false);
         inGame = false;
+        m_player.inMinigame = false;
+
     }
 }

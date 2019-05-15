@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
 
     public float money = 0.0f;
     public List<GameObject> stolenItems = new List<GameObject>();
+    public bool inMinigame = false;
+
 
     Rigidbody m_rb = null;
     Vector3 m_velocity = Vector3.zero;
@@ -36,10 +38,13 @@ public class Player : MonoBehaviour
         {
             m_velocity.y = 0.0f;
         }
-        m_velocity.x = Input.GetAxis("Horizontal") * m_speed;
+        if (!inMinigame)
+        {
+            m_velocity.x = Input.GetAxis("Horizontal") * m_speed;
+        }
         m_rb.velocity = m_velocity;
         m_jumpTimer -= Time.deltaTime;
-        if (m_onGround && m_jumpTimer <= 0.0f)
+        if (m_onGround && m_jumpTimer <= 0.0f && !inMinigame)
         {
             if (Input.GetButtonDown("Jump") && m_onGround)
             {
