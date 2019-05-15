@@ -10,8 +10,8 @@ public class MiniGameController : Singleton<MiniGameController>
     [SerializeField] GameObject m_miniGamePanle = null;
     public AgentData m_agentData = null;
 
-    Stopwatch stopWatch = new Stopwatch();
-    float timeMultiplier = 10.0f;
+    float timeSpent = 10.0f;
+    bool inGame = false;
 
 
     void Start()
@@ -21,29 +21,30 @@ public class MiniGameController : Singleton<MiniGameController>
 
     void Update()
     {
-        UnityEngine.Debug.Log(stopWatch.ElapsedMilliseconds + " millseconds");
-        //time * (1-agentdata perception
-        
-        TimeSpan timeSpan = new TimeSpan(0, 0, 0, 0, (int)timeMultiplier);
-        if (stopWatch.ElapsedMilliseconds == timeSpan.Milliseconds)
+        if (inGame)
         {
-            stopWatch.Stop();
-            UnityEngine.Debug.Log("Stopped");
+            UnityEngine.Debug.Log("Time remaining: "+ timeSpent +" seconds");//replace the logging with the bar
+            if (timeSpent <= 0.1f)
+            {
+                UnityEngine.Debug.Log("Stopped");
+            }
+            else
+            {
+                timeSpent -= Time.deltaTime;
+            }
         }
     }
 
     public void OpenMiniGame()
     {
         m_miniGamePanle.SetActive(true);
-        stopWatch = new Stopwatch();
-        stopWatch.Start();
-        timeMultiplier = 1 - m_agentData.Awarness;
-        timeMultiplier *= 10;
-        timeMultiplier *= 1000;
+        timeSpent = 10 * (m_agentData.Awarness);
+        inGame = true;
     }
 
     public void CloseMiniGame()
     {
         m_miniGamePanle.SetActive(false);
+        inGame = false;
     }
 }

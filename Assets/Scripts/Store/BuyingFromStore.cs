@@ -5,20 +5,25 @@ using TMPro;
 
 public class BuyingFromStore : MonoBehaviour
 {
-    [SerializeField] PlayerData m_player = null;
+    [SerializeField] PlayerData m_playerData = null;
+    [SerializeField] TextMeshProUGUI costText = null;
+    [SerializeField] TextMeshProUGUI upgradeText = null;
 
     public void Bought(string costString, string upgradeString)
     {
         float cost = float.Parse(costString);
         float upgradeAmount = float.Parse(upgradeString);
-        if(m_player.money > cost)
+        if(m_playerData.money > cost)
         {
-            m_player.time = m_player.time + upgradeAmount;
+            m_playerData.time = m_playerData.time + upgradeAmount;
+            m_playerData.money = m_playerData.money - cost;
         }
     }
 
-    public void OnButtonClick(TextMeshProUGUI cost, TextMeshProUGUI thing)
+    public void OnStoreButtonClick()
     {
-
+        Bought(costText.ToString(), upgradeText.ToString());
     }
+
+
 }
