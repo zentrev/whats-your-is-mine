@@ -906,8 +906,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPersistant: 0
   m_player: {fileID: 2114946317}
-  m_agentData: {fileID: 0}
   m_miniGamePanle: {fileID: 314919005}
+  m_agentData: {fileID: 0}
 --- !u!4 &1050927824
 Transform:
   m_ObjectHideFlags: 0
@@ -935,7 +935,7 @@ GameObject:
   - component: {fileID: 1113548816}
   - component: {fileID: 1113548815}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: Minigame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1432,3 +1432,4 @@ MonoBehaviour:
   m_playerData: {fileID: 0}
   money: 0
   stolenItems: []
+  inMinigame: 0
