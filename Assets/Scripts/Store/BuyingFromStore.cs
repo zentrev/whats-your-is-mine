@@ -13,7 +13,7 @@ public class BuyingFromStore : MonoBehaviour
     {
         float cost = float.Parse(costString);
         float upgradeAmount = float.Parse(upgradeString);
-        if(m_playerData.money > cost)
+        if (m_playerData.money > cost)
         {
             m_playerData.time = m_playerData.time + upgradeAmount;
             m_playerData.money = m_playerData.money - cost;
@@ -22,7 +22,9 @@ public class BuyingFromStore : MonoBehaviour
 
     public void OnStoreButtonClick()
     {
-        Bought(costText.ToString(), upgradeText.ToString());
+        string cost = costText.text;
+        string upgrade = upgradeText.text;
+        Bought(cost, upgrade);
     }
 
 
