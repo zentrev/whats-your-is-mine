@@ -16,11 +16,6 @@ public class AgentBehavior : MonoBehaviour
         
     }
 
-    public void Init(AgentData agentData)
-    {
-        AgentData = Instantiate(agentData);
-    }
-
     void Update()
     {
 

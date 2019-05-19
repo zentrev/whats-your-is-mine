@@ -7,7 +7,7 @@ public class AgentManager : Singleton<AgentManager>
     [System.Serializable]
     public struct LevelAgents
     {
-        public AgentData agentData;
+        public GameObject agent;
         public bool forceAgent;
         [Range(0.0f, 1.0f)] public float agentProbobiltiy;
         public bool singleton;
@@ -25,7 +25,7 @@ public class AgentManager : Singleton<AgentManager>
     public struct FixedAgents
     {
         public AgentSpawner agentSpawner;
-        public AgentData agentData;
+        public GameObject agent;
     }
 
     [SerializeField] GameObject m_basicAgent = null;
@@ -45,10 +45,8 @@ public class AgentManager : Singleton<AgentManager>
     {
         foreach(FixedAgents fixedAgent in m_fixedAgents)
         {
-            GameObject agent = GameObject.Instantiate(RetriveAgent(fixedAgent.agentData.Attributes));
+            GameObject agent = GameObject.Instantiate(fixedAgent.agent);
             agent.transform.position = fixedAgent.agentSpawner.transform.position;
-            if(!agent.GetComponent<AgentBehavior>()) agent.AddComponent<AgentBehavior>();
-            agent.GetComponent<AgentBehavior>().Init(fixedAgent.agentData);
             m_levelAgents.Add(agent.GetComponent<AgentBehavior>());
         }
 
@@ -62,11 +60,9 @@ public class AgentManager : Singleton<AgentManager>
                 int spwanerIndex = Random.Range(0, m_agentSpawners.Count);
                 AgentSpawner spawn = m_agentSpawners[spwanerIndex];
 
-                GameObject agent = GameObject.Instantiate(RetriveAgent(pAgent.agentData.Attributes));
+                GameObject agent = GameObject.Instantiate(pAgent.agent);
                 agent.transform.position = spawn.transform.position;
 
-                if (!agent.GetComponent<AgentBehavior>()) agent.AddComponent<AgentBehavior>();
-                agent.GetComponent<AgentBehavior>().Init(pAgent.agentData);
                 m_levelAgents.Add(agent.GetComponent<AgentBehavior>());
                 pAgent.inLevel = true;
 
@@ -91,11 +87,9 @@ public class AgentManager : Singleton<AgentManager>
                         wheight -= pAgent.agentProbobiltiy;
                         if (wheight <= 0)
                         {
-                            GameObject agent = GameObject.Instantiate(RetriveAgent(pAgent.agentData.Attributes));
+                            GameObject agent = GameObject.Instantiate(pAgent.agent);
                             agent.transform.position = spawn.transform.position;
 
-                            if (!agent.GetComponent<AgentBehavior>()) agent.AddComponent<AgentBehavior>();
-                            agent.GetComponent<AgentBehavior>().Init(pAgent.agentData);
                             m_levelAgents.Add(agent.GetComponent<AgentBehavior>());
                             pAgent.inLevel = true;
                             m_posibleAgents[j] = pAgent;
@@ -107,15 +101,6 @@ public class AgentManager : Singleton<AgentManager>
             }
             m_agentSpawners[i] = spawn;
         }
-    }
-
-    GameObject RetriveAgent(AgentData.eAgentAttributes attributes)
-    {
-        GameObject returnObject = m_basicAgent;
-
-        if ((attributes & AgentData.eAgentAttributes.GUARD) != 0) returnObject = m_guardAgent;
-
-        return returnObject;
     }
 
     void Update()
