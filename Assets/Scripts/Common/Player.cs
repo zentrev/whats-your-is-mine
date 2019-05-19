@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
     [SerializeField] [Range(1.0f, 50.0f)] float m_speed = 1.0f;
@@ -13,51 +14,52 @@ public class Player : MonoBehaviour
 
     public float money = 0.0f;
     public List<GameObject> stolenItems = new List<GameObject>();
-    public bool inMinigame = false;
+    [HideInInspector] public bool inMinigame = false;
 
 
-    Rigidbody m_rb = null;
+    Rigidbody2D m_rb = null;
     Vector3 m_velocity = Vector3.zero;
     bool collided = false;
     bool m_onGround = true;
-    Vector3 m_groundNormal;
     float m_jumpTimer = 0.0f;
 
     public PlayerData PlayerData { get => m_playerData; set => m_playerData = value; }
 
     void Start()
     {
-        m_rb = GetComponent<Rigidbody>();
+        m_rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        RaycastHit hit;
-        m_onGround = OnGround(m_groundDistance, out hit);
-        if (m_onGround)
-        {
-            m_velocity.y = 0.0f;
-        }
         if (!inMinigame)
         {
-            m_velocity.x = Input.GetAxis("Horizontal") * m_speed;
-        }
-        m_rb.velocity = m_velocity;
-        m_jumpTimer -= Time.deltaTime;
-        if (m_onGround && m_jumpTimer <= 0.0f && !inMinigame)
-        {
-            if (Input.GetButtonDown("Jump") && m_onGround)
+            RaycastHit hit;
+            m_onGround = OnGround(m_groundDistance, out hit);
+            if (m_onGround)
             {
-                m_velocity = m_velocity + Vector3.up * m_jumpForce;
-                m_rb.velocity = m_velocity;
-                m_jumpTimer = 0.2f;
+                m_velocity.y = 0.0f;
+            }
+
+            m_velocity.x = Input.GetAxis("Horizontal") * m_speed;
+
+            m_rb.velocity = m_velocity;
+
+            m_jumpTimer -= Time.deltaTime;
+            if (m_onGround && m_jumpTimer <= 0.0f)
+            {
+                if (Input.GetButtonDown("Jump") && m_onGround)
+                {
+                    m_velocity = m_velocity + Vector3.up * m_jumpForce;
+                    m_rb.velocity = m_velocity;
+                    m_jumpTimer = 0.2f;
+                }
+            }
+            else
+            {
+                //m_velocity.y -= .50f;
             }
         }
-        else
-        {
-            m_velocity.y -=  .50f;
-        }
-
     }
 
     private void OnTriggerStay(Collider other)
@@ -82,8 +84,12 @@ public class Player : MonoBehaviour
 
     bool OnGround(float distance, out RaycastHit hit)
     {
-        Debug.DrawRay(transform.position + (Vector3.up * 0.1f), Vector3.down * distance, Color.red);
+        //Debug.DrawRay(transform.position + (Vector3.up * 0.1f), Vector3.down * distance, Color.red);
 
-        return (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, out hit, distance, m_layerMask));
+        //if(Physics2D.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, out hit, distance, m_layerMask))
+        //{
+        //    return true;
+        //}
+        //return false;
     }
 }
