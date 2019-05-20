@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MiniGameController : Singleton<MiniGameController>
 {
@@ -10,8 +10,13 @@ public class MiniGameController : Singleton<MiniGameController>
     [SerializeField] GameObject m_miniGamePanle = null;
     public AgentData m_agentData = null;
 
-    float timeSpent = 10.0f;
-    bool inGame = false;
+    float m_totalTime = 0.0f;
+    float m_timeSpent = 10.0f;
+    float m_percentOfTime = 0.0f;
+    bool m_inGame = false;
+
+    // debug tools
+    public Image countdownImage;
 
 
     void Start()
@@ -21,33 +26,37 @@ public class MiniGameController : Singleton<MiniGameController>
 
     void Update()
     {
-        if (inGame)
-        {
-            UnityEngine.Debug.Log("Time remaining: "+ timeSpent +" seconds");//replace the logging with the bar
-            if (timeSpent <= 0.1f)
-            {
-                UnityEngine.Debug.Log("Stopped");
-            }
-            else
-            {
-                timeSpent -= Time.deltaTime;
-            }
-        }
+
     }
 
     public void OpenMiniGame()
     {
         m_miniGamePanle.SetActive(true);
-        timeSpent = 10 * (m_agentData.Awarness);
-        inGame = true;
-        m_player.inControl = true;
+        m_inGame = true;
+        StartCoroutine(Countdown(m_player.PlayerData.time * (1 - m_agentData.Awarness)));
+        m_player.inControl = false;
     }
 
     public void CloseMiniGame()
     {
         m_miniGamePanle.SetActive(false);
-        inGame = false;
-        m_player.inControl = false;
+        m_inGame = false;
+        m_player.inControl = true;
 
+    }
+
+    private IEnumerator Countdown(float time)
+    {
+        float duration = time;
+                             
+        float normalizedTime = 0;
+        while (normalizedTime <= 1f)
+        {
+            Debug.Log(normalizedTime);
+            countdownImage.fillAmount = 1-normalizedTime;
+            normalizedTime += Time.deltaTime / duration;
+            yield return null;
+        }
+        CloseMiniGame();
     }
 }
