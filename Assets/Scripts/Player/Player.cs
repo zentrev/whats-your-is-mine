@@ -106,7 +106,13 @@ public class Player : MonoBehaviour
             hitBufferList.Clear();
             for (int i = 0; i < count; i++)
             {
-                hitBufferList.Add(hitBuffer[i]);
+                PlatformEffector2D platform = hitBuffer[i].collider.GetComponent<PlatformEffector2D>();
+                if (!platform ||
+                    (hitBuffer[i].normal == Vector2.up
+                    && velocity.y < 0 && yMovement)) //only when going down
+                {
+                    hitBufferList.Add(hitBuffer[i]); // get the colliding objects
+                }
             }
 
             for (int i = 0; i < hitBufferList.Count; i++)
