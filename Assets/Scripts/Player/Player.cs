@@ -6,10 +6,15 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // Player Stuff
+    [Header("Movement")]
     [SerializeField] float m_maxSpeed = 7;
     [SerializeField] float m_jumpTakeOffSpeed = 7;
     [SerializeField] float gravityModifier = 1f;
-    public float minGroundNormalY = .65f;
+    [HideInInspector] public float minGroundNormalY = .65f;
+
+    [Header("Triggers")]
+    [SerializeField] PickPocketCollider m_rightTrigger = null;
+    [SerializeField] PickPocketCollider m_leftTrigger = null;
 
     [SerializeField] PlayerData m_playerData;
     public PlayerData PlayerData { get => m_playerData; set => m_playerData = value; }
@@ -48,6 +53,27 @@ public class Player : MonoBehaviour
     {
         targetVelocity = Vector2.zero;
         ComputeVelocity();
+        PickPocket();
+    }
+
+    void PickPocket()
+    {
+        if (Input.GetKey(KeyCode.LeftShift) && inControl)
+        {
+            AgentData agentData = GetCurrentTrigger().agent;
+            if (agentData == null) return;
+            Debug.Log("Steal");
+            PlayerData.money += agentData.Value;
+            Debug.Log("$" + PlayerData.money);
+            PlayerData.itemsStolen.AddRange(agentData.Items);
+            MiniGameController.Instance.m_agentData = agentData;
+            MiniGameController.Instance.OpenMiniGame();
+        }
+    }
+
+    PickPocketCollider GetCurrentTrigger()
+    {
+        return m_rightTrigger;
     }
 
     void FixedUpdate()
@@ -117,7 +143,6 @@ public class Player : MonoBehaviour
         if (inControl)
         {
             move.x = Input.GetAxis("Horizontal");
-            Debug.Log(move.x);
 
             if (Input.GetButtonDown("Jump") && grounded)
             {
@@ -139,17 +164,4 @@ public class Player : MonoBehaviour
         targetVelocity = move * m_maxSpeed;
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if(Input.GetKey(KeyCode.LeftShift) && other.tag == "Agent" && inControl)
-        {
-            AgentData agentData = other.gameObject.GetComponent<AgentBehavior>().AgentData;
-            Debug.Log("Steal");
-            PlayerData.money += agentData.Value;
-            Debug.Log("$" + PlayerData.money);
-            PlayerData.itemsStolen.AddRange(agentData.Items);
-            MiniGameController.Instance.m_agentData = agentData;
-            MiniGameController.Instance.OpenMiniGame();
-        }
-    }
 }

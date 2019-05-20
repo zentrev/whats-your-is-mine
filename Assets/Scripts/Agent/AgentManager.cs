@@ -27,7 +27,7 @@ public class AgentManager : Singleton<AgentManager>
         public AgentSpawner agentSpawner;
         public GameObject agent;
     }
-
+    [SerializeField] Transform m_parent = null;
     [SerializeField] GameObject m_basicAgent = null;
     [SerializeField] GameObject m_guardAgent = null;
 
@@ -45,7 +45,7 @@ public class AgentManager : Singleton<AgentManager>
     {
         foreach(FixedAgents fixedAgent in m_fixedAgents)
         {
-            GameObject agent = GameObject.Instantiate(fixedAgent.agent);
+            GameObject agent = GameObject.Instantiate(fixedAgent.agent, m_parent);
             agent.transform.position = fixedAgent.agentSpawner.transform.position;
             m_levelAgents.Add(agent.GetComponent<AgentBehavior>());
         }
@@ -60,7 +60,7 @@ public class AgentManager : Singleton<AgentManager>
                 int spwanerIndex = Random.Range(0, m_agentSpawners.Count);
                 AgentSpawner spawn = m_agentSpawners[spwanerIndex];
 
-                GameObject agent = GameObject.Instantiate(pAgent.agent);
+                GameObject agent = GameObject.Instantiate(pAgent.agent, m_parent);
                 agent.transform.position = spawn.transform.position;
 
                 m_levelAgents.Add(agent.GetComponent<AgentBehavior>());
@@ -87,7 +87,7 @@ public class AgentManager : Singleton<AgentManager>
                         wheight -= pAgent.agentProbobiltiy;
                         if (wheight <= 0)
                         {
-                            GameObject agent = GameObject.Instantiate(pAgent.agent);
+                            GameObject agent = GameObject.Instantiate(pAgent.agent, m_parent);
                             agent.transform.position = spawn.transform.position;
 
                             m_levelAgents.Add(agent.GetComponent<AgentBehavior>());
