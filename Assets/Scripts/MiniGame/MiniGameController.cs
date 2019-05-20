@@ -9,10 +9,6 @@ public class MiniGameController : Singleton<MiniGameController>
     [SerializeField] Player m_player = null;
     [SerializeField] GameObject m_miniGamePanle = null;
     public AgentData m_agentData = null;
-
-    float m_totalTime = 0.0f;
-    float m_timeSpent = 10.0f;
-    float m_percentOfTime = 0.0f;
     bool m_inGame = false;
 
     // debug tools
@@ -50,7 +46,7 @@ public class MiniGameController : Singleton<MiniGameController>
         float duration = time;
                              
         float normalizedTime = 0;
-        while (normalizedTime <= 1f)
+        while (normalizedTime <= 1f && m_inGame)
         {
             countdownImage.fillAmount = 1-normalizedTime;
             normalizedTime += Time.deltaTime / duration;
