@@ -52,7 +52,6 @@ public class MiniGameController : Singleton<MiniGameController>
         float normalizedTime = 0;
         while (normalizedTime <= 1f)
         {
-            Debug.Log(normalizedTime);
             countdownImage.fillAmount = 1-normalizedTime;
             normalizedTime += Time.deltaTime / duration;
             yield return null;
