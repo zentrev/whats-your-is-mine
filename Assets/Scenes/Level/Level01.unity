@@ -816,6 +816,7 @@ MonoBehaviour:
   m_player: {fileID: 5756280178827971471}
   m_miniGamePanle: {fileID: 92152874}
   m_agentData: {fileID: 0}
+  countdownImage: {fileID: 0}
 --- !u!1001 &134965628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -993,6 +994,11 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2701861268527909724, guid: 962c2985f1b4b9f41a79e798162bd5ac,
+        type: 3}
+      propertyPath: m_moneyText
+      value: 
+      objectReference: {fileID: 1162370838}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 962c2985f1b4b9f41a79e798162bd5ac, type: 3}
 --- !u!224 &134965629 stripped
@@ -4527,10 +4533,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5756280180227696422, guid: f7620813d0e53414c94004350fda598e,
+    - target: {fileID: 5756280180227696416, guid: f7620813d0e53414c94004350fda598e,
         type: 3}
-      propertyPath: m_Name
-      value: BombGuy
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5756280180227696419, guid: f7620813d0e53414c94004350fda598e,
         type: 3}
@@ -4587,10 +4593,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5756280180227696416, guid: f7620813d0e53414c94004350fda598e,
+    - target: {fileID: 5756280180227696422, guid: f7620813d0e53414c94004350fda598e,
         type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
+      propertyPath: m_Name
+      value: BombGuy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7620813d0e53414c94004350fda598e, type: 3}
@@ -4612,17 +4618,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c43c4cc8ff8e95242b0765d8385f1278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 15
-  m_rotateSpeed: 1
-  m_groundDistance: 0.2
-  m_jumpForce: 6
-  m_layerMask:
-    serializedVersion: 2
-    m_Bits: 256
+  m_maxSpeed: 7
+  m_jumpTakeOffSpeed: 7
+  gravityModifier: 1
+  minGroundNormalY: 0.65
+  m_rightTrigger: {fileID: 0}
+  m_leftTrigger: {fileID: 0}
   m_playerData: {fileID: 11400000, guid: 44c59e4a05184744a85a5812aae33ede, type: 2}
-  money: 0
-  stolenItems: []
-  inMinigame: 0
+  inControl: 1
 --- !u!54 &5756280178827971475
 Rigidbody:
   m_ObjectHideFlags: 0
