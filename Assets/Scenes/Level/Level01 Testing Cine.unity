@@ -2203,7 +2203,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1064951551}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 2
+    OrthographicSize: 2.5
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -5724,12 +5724,12 @@ PrefabInstance:
     - target: {fileID: 7233614891137070831, guid: 58522b9411c857540a388373e7526709,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.29505825
+      value: 1.1797276
       objectReference: {fileID: 0}
     - target: {fileID: 7233614891137070831, guid: 58522b9411c857540a388373e7526709,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00019598007
+      value: 0.00078344345
       objectReference: {fileID: 0}
     - target: {fileID: 7233614891137070831, guid: 58522b9411c857540a388373e7526709,
         type: 3}
@@ -5764,7 +5764,7 @@ PrefabInstance:
     - target: {fileID: 7233614891137070830, guid: 58522b9411c857540a388373e7526709,
         type: 3}
       propertyPath: orthographic size
-      value: 2
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58522b9411c857540a388373e7526709, type: 3}
