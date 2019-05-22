@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   money: 0
-  time: 10
+  time: 15
   itemsHeld: []
   itemsStolen: []

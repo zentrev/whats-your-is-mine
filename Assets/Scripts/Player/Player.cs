@@ -62,9 +62,7 @@ public class Player : MonoBehaviour
         {
             AgentData agentData = GetCurrentTrigger().agent;
             if (agentData == null) return;
-            Debug.Log("Steal");
             PlayerData.money += agentData.Value;
-            Debug.Log("$" + PlayerData.money);
             PlayerData.itemsStolen.AddRange(agentData.Items);
             MiniGameController.Instance.m_agentData = agentData;
             MiniGameController.Instance.OpenMiniGame();

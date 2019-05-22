@@ -16,7 +16,7 @@ public class AgentData : ScriptableObject
         CAPTIN      = (1 << 4),
     }
 
-    public float Value = 10.0f;
+    public int Value = 10;
     public float Awarness = .5f;
     public eAgentAttributes Attributes;
     public List<GameObject> Items;
