@@ -27,7 +27,7 @@ public class AgentBehavior : MonoBehaviour
         m_animator.SetBool("Walk", walk);
         if (OnEdge())
         {
-            m_spriteRenderer.flipX = true ? false : true;
+            m_spriteRenderer.flipX = m_spriteRenderer.flipX ? false : true;
         }
         if (!m_spriteRenderer.flipX)
         {
@@ -42,7 +42,8 @@ public class AgentBehavior : MonoBehaviour
     private bool OnEdge()
     {
         bool onEdge = false;
-        
+        Vector2 direction = !m_spriteRenderer.flipX ? Vector2.right : Vector2.left;
+        if (Physics2D.Raycast(transform.position, direction.normalized, 0.1f).distance>0.1f) onEdge = true;
         return onEdge;
     }
 }
