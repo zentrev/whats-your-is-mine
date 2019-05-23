@@ -17,7 +17,6 @@ public class Player : MonoBehaviour
     [SerializeField] PickPocketCollider m_leftTrigger = null;
 
     [SerializeField] PlayerData m_playerData;
-    Animator m_animator = null;
     public PlayerData PlayerData { get => m_playerData; set => m_playerData = value; }
     public bool inControl = true;
 
@@ -41,7 +40,8 @@ public class Player : MonoBehaviour
         contactFilter.useTriggers = false;
         contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
         contactFilter.useLayerMask = true;
-        m_animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Awake()
@@ -149,31 +149,33 @@ public class Player : MonoBehaviour
         if (inControl)
         {
             move.x = Input.GetAxis("Horizontal");
-            if (move.x > Mathf.Abs(0.001f))
-            {
-                m_animator.SetBool("Walking", true);
-            }
-            else
-            {
-                m_animator.SetBool("Walking", false);
-            }
+           
             if (Input.GetButtonDown("Jump") && grounded)
             {
                 velocity.y = m_jumpTakeOffSpeed;
-                m_animator.SetBool("InAir", true);
-
             }
 
             else if (Input.GetButtonUp("Jump"))
             {
-                m_animator.SetBool("InAir", false);
                 if (velocity.y > 0)
                 {
                     velocity.y = velocity.y * 0.5f;
                 }
             }
-        }
 
+            
+        }
+        bool run = Mathf.Abs(velocity.x) > 0.001f && grounded;
+        animator.SetBool("Walking", run);
+        animator.SetBool("InAir", !grounded);
+        if (velocity.x < -0.01f)
+        {
+            spriteRenderer.flipX = true;
+        }
+        if (velocity.x > -0.01f)
+        {
+            spriteRenderer.flipX = false;
+        }
         //animator.SetBool("grounded", grounded);
         //animator.SetFloat("velocityX", velocity.x / maxSpeed);
 
