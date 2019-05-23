@@ -137,7 +137,6 @@ public class MiniGameController : Singleton<MiniGameController>
         m_inGame = false;
         m_player.inControl = true;
         
-
         m_activeObjects.Clear();
     }
 
