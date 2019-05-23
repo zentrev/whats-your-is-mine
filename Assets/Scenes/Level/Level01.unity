@@ -189,7 +189,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -813,10 +813,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPersistant: 0
-  m_player: {fileID: 5756280178827971471}
-  m_miniGamePanle: {fileID: 92152874}
-  m_agentData: {fileID: 0}
+  m_miniGameCanvas: {fileID: 0}
+  m_miniGamePanel: {fileID: 0}
   countdownImage: {fileID: 0}
+  m_moneyObject: {fileID: 0}
+  m_minFlingSpeed: 0
+  m_maxFlingSpeed: 50
+  m_leftNodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  m_rightNodes:
+  - {fileID: 0}
+  - {fileID: 0}
+  m_player: {fileID: 5756280178827971471}
+  m_agentData: {fileID: 0}
 --- !u!1001 &134965628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -932,66 +942,6 @@ PrefabInstance:
     - target: {fileID: 2701861268527909792, guid: 962c2985f1b4b9f41a79e798162bd5ac,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9077627303107278640, guid: 962c2985f1b4b9f41a79e798162bd5ac,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9077627303107278640, guid: 962c2985f1b4b9f41a79e798162bd5ac,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9077627303107278640, guid: 962c2985f1b4b9f41a79e798162bd5ac,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9077627303107278640, guid: 962c2985f1b4b9f41a79e798162bd5ac,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5721355955561065904, guid: 962c2985f1b4b9f41a79e798162bd5ac,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5721355955561065904, guid: 962c2985f1b4b9f41a79e798162bd5ac,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5721355955561065904, guid: 962c2985f1b4b9f41a79e798162bd5ac,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5721355955561065904, guid: 962c2985f1b4b9f41a79e798162bd5ac,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6078516065967146492, guid: 962c2985f1b4b9f41a79e798162bd5ac,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6078516065967146492, guid: 962c2985f1b4b9f41a79e798162bd5ac,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6078516065967146492, guid: 962c2985f1b4b9f41a79e798162bd5ac,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6078516065967146492, guid: 962c2985f1b4b9f41a79e798162bd5ac,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2701861268527909724, guid: 962c2985f1b4b9f41a79e798162bd5ac,
@@ -1242,6 +1192,18 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!223 &262985084 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 2701861268527909727, guid: 962c2985f1b4b9f41a79e798162bd5ac,
+    type: 3}
+  m_PrefabInstance: {fileID: 134965628}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &293878807 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 797332870662813746, guid: f3dac9521274c454cafa0d462b45dee4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1491474102}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &343717484
 GameObject:
   m_ObjectHideFlags: 0
@@ -1336,6 +1298,7 @@ GameObject:
   - component: {fileID: 356419438}
   - component: {fileID: 356419437}
   - component: {fileID: 356419439}
+  - component: {fileID: 356419440}
   m_Layer: 0
   m_Name: DecorationDoor
   m_TagString: Untagged
@@ -1431,6 +1394,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8312926, y: 1.5}
   m_EdgeRadius: 0
+--- !u!114 &356419440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356419436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f3ce11a81ed8cf47a1af60adbccdc8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_shop: {fileID: 262985084}
 --- !u!1 &462826672
 GameObject:
   m_ObjectHideFlags: 0
@@ -3911,6 +3887,31 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2609801388882230722, guid: f3dac9521274c454cafa0d462b45dee4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8892015409661071629, guid: f3dac9521274c454cafa0d462b45dee4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479447891472433243, guid: f3dac9521274c454cafa0d462b45dee4,
+        type: 3}
+      propertyPath: m_miniGameCanvas
+      value: 
+      objectReference: {fileID: 293878807}
+    - target: {fileID: 5479447891472433243, guid: f3dac9521274c454cafa0d462b45dee4,
+        type: 3}
+      propertyPath: m_miniGamePanel
+      value: 
+      objectReference: {fileID: 293878807}
+    - target: {fileID: 5479447891472433243, guid: f3dac9521274c454cafa0d462b45dee4,
+        type: 3}
+      propertyPath: m_player
+      value: 
+      objectReference: {fileID: 5756280178827971477}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3dac9521274c454cafa0d462b45dee4, type: 3}
 --- !u!224 &1491474103 stripped
@@ -3989,7 +3990,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -4533,6 +4534,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5756280180227696422, guid: f7620813d0e53414c94004350fda598e,
+        type: 3}
+      propertyPath: m_Name
+      value: BombGuy
+      objectReference: {fileID: 0}
     - target: {fileID: 5756280180227696416, guid: f7620813d0e53414c94004350fda598e,
         type: 3}
       propertyPath: m_SortingOrder
@@ -4593,11 +4599,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5756280180227696422, guid: f7620813d0e53414c94004350fda598e,
-        type: 3}
-      propertyPath: m_Name
-      value: BombGuy
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7620813d0e53414c94004350fda598e, type: 3}
 --- !u!1 &5756280178827971470 stripped
@@ -4642,3 +4643,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5756280178827971477 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5756280178827971471, guid: f7620813d0e53414c94004350fda598e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5756280178827971469}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5756280178827971470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c43c4cc8ff8e95242b0765d8385f1278, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
