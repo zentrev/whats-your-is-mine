@@ -40,6 +40,8 @@ public class Player : MonoBehaviour
         contactFilter.useTriggers = false;
         contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
         contactFilter.useLayerMask = true;
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Awake()
@@ -147,7 +149,7 @@ public class Player : MonoBehaviour
         if (inControl)
         {
             move.x = Input.GetAxis("Horizontal");
-
+           
             if (Input.GetButtonDown("Jump") && grounded)
             {
                 velocity.y = m_jumpTakeOffSpeed;
@@ -160,8 +162,20 @@ public class Player : MonoBehaviour
                     velocity.y = velocity.y * 0.5f;
                 }
             }
-        }
 
+            
+        }
+        bool run = Mathf.Abs(velocity.x) > 0.001f && grounded;
+        animator.SetBool("Walking", run);
+        animator.SetBool("InAir", !grounded);
+        if (velocity.x < -0.01f)
+        {
+            spriteRenderer.flipX = true;
+        }
+        if (velocity.x > -0.01f)
+        {
+            spriteRenderer.flipX = false;
+        }
         //animator.SetBool("grounded", grounded);
         //animator.SetFloat("velocityX", velocity.x / maxSpeed);
 
