@@ -843,20 +843,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPersistant: 0
-  m_miniGameCanvas: {fileID: 0}
-  m_miniGamePanel: {fileID: 0}
-  countdownImage: {fileID: 220959502}
-  m_moneyObject: {fileID: 0}
-  m_minFlingSpeed: 0
-  m_maxFlingSpeed: 50
-  m_leftNodes:
-  - {fileID: 0}
-  - {fileID: 0}
-  m_rightNodes:
-  - {fileID: 0}
-  - {fileID: 0}
   m_player: {fileID: 2092838063}
+  m_miniGamePanle: {fileID: 1009030902}
   m_agentData: {fileID: 0}
+  countdownImage: {fileID: 220959502}
 --- !u!1 &96158553
 GameObject:
   m_ObjectHideFlags: 3
@@ -2803,6 +2793,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1009030902 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 797332870662813746, guid: f3dac9521274c454cafa0d462b45dee4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1491474102}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1037648367
 GameObject:
   m_ObjectHideFlags: 0
@@ -4990,16 +4986,6 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: CloseMiniGame
       objectReference: {fileID: 0}
-    - target: {fileID: 2609801388882230722, guid: f3dac9521274c454cafa0d462b45dee4,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8892015409661071629, guid: f3dac9521274c454cafa0d462b45dee4,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3dac9521274c454cafa0d462b45dee4, type: 3}
 --- !u!224 &1491474103 stripped
@@ -5671,6 +5657,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3134677106900346787, guid: 58522b9411c857540a388373e7526709,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3134677106900346786, guid: 58522b9411c857540a388373e7526709,
+        type: 3}
+      propertyPath: m_jumpTakeOffSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3134677105824196238, guid: 58522b9411c857540a388373e7526709,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5725,16 +5721,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3134677106900346787, guid: 58522b9411c857540a388373e7526709,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3134677106900346786, guid: 58522b9411c857540a388373e7526709,
-        type: 3}
-      propertyPath: m_jumpTakeOffSpeed
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5074777407559828856, guid: 58522b9411c857540a388373e7526709,
         type: 3}
