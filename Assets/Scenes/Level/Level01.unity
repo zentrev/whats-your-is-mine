@@ -1254,6 +1254,18 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &254628422 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5479447891472433243, guid: f3dac9521274c454cafa0d462b45dee4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1491474102}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d586b38340a28d045a14f7b973aa035f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &343717484
 GameObject:
   m_ObjectHideFlags: 0
@@ -4000,6 +4012,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1469756743 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 797332870662813746, guid: f3dac9521274c454cafa0d462b45dee4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1491474102}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1487993476
 GameObject:
   m_ObjectHideFlags: 0
@@ -4045,6 +4063,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Minigame
+      objectReference: {fileID: 0}
+    - target: {fileID: 797332870662813746, guid: f3dac9521274c454cafa0d462b45dee4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 797332868599878177, guid: f3dac9521274c454cafa0d462b45dee4,
+        type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 797332868599878177, guid: f3dac9521274c454cafa0d462b45dee4,
+        type: 3}
+      propertyPath: m_FillClockwise
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 797332870662813745, guid: f3dac9521274c454cafa0d462b45dee4,
         type: 3}
@@ -4151,11 +4184,86 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 797332868599878178, guid: f3dac9521274c454cafa0d462b45dee4,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 254628422}
+    - target: {fileID: 797332868599878178, guid: f3dac9521274c454cafa0d462b45dee4,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseMiniGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 6870409616419559303, guid: f3dac9521274c454cafa0d462b45dee4,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6870409616419559303, guid: f3dac9521274c454cafa0d462b45dee4,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 78.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 6120089828647624743, guid: f3dac9521274c454cafa0d462b45dee4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6120089828647624743, guid: f3dac9521274c454cafa0d462b45dee4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3628221348376758578, guid: f3dac9521274c454cafa0d462b45dee4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2609801388882230722, guid: f3dac9521274c454cafa0d462b45dee4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2609801388882230722, guid: f3dac9521274c454cafa0d462b45dee4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8892015409661071629, guid: f3dac9521274c454cafa0d462b45dee4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479447891472433243, guid: f3dac9521274c454cafa0d462b45dee4,
+        type: 3}
+      propertyPath: m_miniGameCanvas
+      value: 
+      objectReference: {fileID: 1469756743}
+    - target: {fileID: 5479447891472433243, guid: f3dac9521274c454cafa0d462b45dee4,
+        type: 3}
+      propertyPath: m_miniGamePanel
+      value: 
+      objectReference: {fileID: 1718298584}
     - target: {fileID: 5479447891472433243, guid: f3dac9521274c454cafa0d462b45dee4,
         type: 3}
       propertyPath: m_player
       value: 
       objectReference: {fileID: 493193679}
+    - target: {fileID: 5479447891472433243, guid: f3dac9521274c454cafa0d462b45dee4,
+        type: 3}
+      propertyPath: m_maxFlingSpeed
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479447891472433243, guid: f3dac9521274c454cafa0d462b45dee4,
+        type: 3}
+      propertyPath: m_minFlingSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5690149836233835202, guid: f3dac9521274c454cafa0d462b45dee4,
+        type: 3}
+      propertyPath: m_Name
+      value: SpawningNodes
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3dac9521274c454cafa0d462b45dee4, type: 3}
 --- !u!224 &1491474103 stripped
@@ -4568,6 +4676,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1718298584 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 797332869310797922, guid: f3dac9521274c454cafa0d462b45dee4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1491474102}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1727073738
 GameObject:
   m_ObjectHideFlags: 0
