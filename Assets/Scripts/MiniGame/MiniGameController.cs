@@ -32,6 +32,8 @@ public class MiniGameController : Singleton<MiniGameController>
     private float mousePosiX = 0.0f;
     private Vector2 rayHitWorldPosi = Vector2.zero;
     [SerializeField] Canvas m_miniGameCnvasTest = null;
+    [SerializeField] Transform m_leftLimiter = null;
+    [SerializeField] Transform m_rightLimiter = null;
 
 
     void Start()
@@ -64,7 +66,11 @@ public class MiniGameController : Singleton<MiniGameController>
         Input.mousePosition, m_miniGameCnvasTest.worldCamera,
         out movePosition);
 
-        //movePosition.y = m_miniGameHook.transform.position.y;
+        movePosition.y = m_miniGameHook.transform.localPosition.y;
+
+        if (movePosition.x < m_leftLimiter.localPosition.x) movePosition.x = m_leftLimiter.localPosition.x;
+        if (movePosition.x > m_rightLimiter.localPosition.x) movePosition.x = m_rightLimiter.localPosition.x;
+
         m_miniGameHook.transform.position = m_miniGameCnvasTest.transform.TransformPoint(movePosition);
 
 
