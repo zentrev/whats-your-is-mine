@@ -34,46 +34,69 @@ public class MiniGameController : Singleton<MiniGameController>
     [SerializeField] Canvas m_miniGameCnvasTest = null;
     [SerializeField] Transform m_leftLimiter = null;
     [SerializeField] Transform m_rightLimiter = null;
+    [SerializeField] Transform m_dropLimiter = null;
+    [SerializeField] float m_hookSpeed = 1.0f;
+
+    Vector3 m_hookStickPos = Vector3.zero;
+    bool m_hookDroped = false;
+    bool m_hookRaising = false;
 
 
     void Start()
     {
+        m_hookStickPos = m_miniGameHook.transform.localPosition;
+
         CloseMiniGame();
         if (m_player == null) m_player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         Vector2 pos;
 
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            m_miniGameCnvasTest.transform as RectTransform, Input.mousePosition,
-            m_miniGameCnvasTest.worldCamera, out pos);
-
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(m_miniGameCnvasTest.transform as RectTransform, Input.mousePosition, m_miniGameCnvasTest.worldCamera, out pos);
     }
 
     void Update()
     {
-        //if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit rayHit))
-        //{
-        //    rayHitWorldPosi = rayHit.point;
-        //    mousePosiX = rayHitWorldPosi.x;
-        //}
-        //Vector3 newVec = m_miniGameHook.transform.position;
-        //newVec.x = mousePosiX;
+        if (!m_hookDroped)
+        {
+            Vector2 movePosition = Vector2.zero;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            m_miniGameCnvasTest.transform as RectTransform,
+            Input.mousePosition, m_miniGameCnvasTest.worldCamera,
+            out movePosition);
 
-        //m_miniGameHook.transform.position = newVec;
+            movePosition.y = m_miniGameHook.transform.localPosition.y;
 
-        Vector2 movePosition = Vector2.zero;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(
-        m_miniGameCnvasTest.transform as RectTransform,
-        Input.mousePosition, m_miniGameCnvasTest.worldCamera,
-        out movePosition);
+            if (movePosition.x < m_leftLimiter.localPosition.x) movePosition.x = m_leftLimiter.localPosition.x;
+            if (movePosition.x > m_rightLimiter.localPosition.x) movePosition.x = m_rightLimiter.localPosition.x;
 
-        movePosition.y = m_miniGameHook.transform.localPosition.y;
+            m_miniGameHook.transform.position = m_miniGameCnvasTest.transform.TransformPoint(movePosition);
 
-        if (movePosition.x < m_leftLimiter.localPosition.x) movePosition.x = m_leftLimiter.localPosition.x;
-        if (movePosition.x > m_rightLimiter.localPosition.x) movePosition.x = m_rightLimiter.localPosition.x;
+            if (Input.GetMouseButtonDown(0))
+            {
+                m_hookDroped = true;
+                m_hookStickPos = m_miniGameHook.transform.localPosition;
+            }
+        }
+        else
+        {
+            Vector3 movePosition = m_miniGameHook.transform.position;
+            if (m_miniGameHook.transform.localPosition.y < m_dropLimiter.transform.localPosition.y) m_hookRaising = true;
 
-        m_miniGameHook.transform.position = m_miniGameCnvasTest.transform.TransformPoint(movePosition);
-
-
+            if (m_miniGameHook.transform.localPosition.y > m_hookStickPos.y)
+            {
+                m_hookRaising = false;
+                m_hookDroped = false;
+            }
+            if (!m_hookRaising)
+            {
+                movePosition.y -= m_hookSpeed * Time.deltaTime;
+            }
+            else
+            {
+                movePosition.y += m_hookSpeed * Time.deltaTime;
+                
+            }
+            m_miniGameHook.transform.position = movePosition;
+        }
         m_runningTime += Time.deltaTime;
         UpdateObjects();
     }
@@ -118,6 +141,16 @@ public class MiniGameController : Singleton<MiniGameController>
                 {
                     WrapObject(go, true);
                 }
+            }
+        }
+
+        foreach(GameObject go in m_activeObjects)
+        {
+            if (m_miniGameHook.GetComponent<PolygonCollider2D>().IsTouching(go.GetComponent<Collider2D>()))
+            {
+                m_activeObjects.Remove(go);
+                Destroy(go);
+                m_agentData.Value--;
             }
         }
     }
@@ -174,7 +207,7 @@ public class MiniGameController : Singleton<MiniGameController>
         m_miniGameCanvas.SetActive(false);
         m_inGame = false;
         m_player.inControl = true;
-        
+        m_miniGameHook.transform.position = m_hookStickPos;
         m_activeObjects.Clear();
     }
 
