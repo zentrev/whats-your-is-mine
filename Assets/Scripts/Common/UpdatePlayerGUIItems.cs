@@ -10,6 +10,6 @@ public class UpdatePlayerGUIItems : MonoBehaviour
 
     private void Update()
     {
-        m_moneyText.text = "Money: " + m_playerData.money;
+        m_moneyText.text = m_playerData.money.ToString("D4");
     }
 }
