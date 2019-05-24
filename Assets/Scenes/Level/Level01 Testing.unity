@@ -4693,6 +4693,16 @@ PrefabInstance:
       propertyPath: m_maxFlingSpeed
       value: 45
       objectReference: {fileID: 0}
+    - target: {fileID: 5479447891472433243, guid: f3dac9521274c454cafa0d462b45dee4,
+        type: 3}
+      propertyPath: m_miniGameHook
+      value: 
+      objectReference: {fileID: 1933225227}
+    - target: {fileID: 5479447891472433243, guid: f3dac9521274c454cafa0d462b45dee4,
+        type: 3}
+      propertyPath: m_miniGameCnvasTest
+      value: 
+      objectReference: {fileID: 797332869184712328}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3dac9521274c454cafa0d462b45dee4, type: 3}
 --- !u!1 &1492927564
@@ -5213,6 +5223,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d586b38340a28d045a14f7b973aa035f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1933225227 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2997722908674288374, guid: f3dac9521274c454cafa0d462b45dee4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1491474102}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1946376367
 GameObject:
   m_ObjectHideFlags: 0
@@ -5366,6 +5382,12 @@ GameObject:
 --- !u!224 &797332869184712327 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 797332870662813745, guid: f3dac9521274c454cafa0d462b45dee4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1491474102}
+  m_PrefabAsset: {fileID: 0}
+--- !u!223 &797332869184712328 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 797332870662813742, guid: f3dac9521274c454cafa0d462b45dee4,
     type: 3}
   m_PrefabInstance: {fileID: 1491474102}
   m_PrefabAsset: {fileID: 0}

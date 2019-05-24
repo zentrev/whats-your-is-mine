@@ -27,15 +27,47 @@ public class MiniGameController : Singleton<MiniGameController>
     Dictionary<GameObject, float> m_objectsToSpawn = new Dictionary<GameObject, float>();
     List<GameObject> m_activeObjects = new List<GameObject>();
 
+    //Hook Fields
+    [SerializeField] GameObject m_miniGameHook = null;
+    private float mousePosiX = 0.0f;
+    private Vector2 rayHitWorldPosi = Vector2.zero;
+    [SerializeField] Canvas m_miniGameCnvasTest = null;
+
 
     void Start()
     {
         CloseMiniGame();
         if (m_player == null) m_player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        Vector2 pos;
+
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            m_miniGameCnvasTest.transform as RectTransform, Input.mousePosition,
+            m_miniGameCnvasTest.worldCamera, out pos);
+
     }
 
     void Update()
     {
+        //if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit rayHit))
+        //{
+        //    rayHitWorldPosi = rayHit.point;
+        //    mousePosiX = rayHitWorldPosi.x;
+        //}
+        //Vector3 newVec = m_miniGameHook.transform.position;
+        //newVec.x = mousePosiX;
+
+        //m_miniGameHook.transform.position = newVec;
+
+        Vector2 movePosition = Vector2.zero;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+        m_miniGameCnvasTest.transform as RectTransform,
+        Input.mousePosition, m_miniGameCnvasTest.worldCamera,
+        out movePosition);
+
+        //movePosition.y = m_miniGameHook.transform.position.y;
+        m_miniGameHook.transform.position = m_miniGameCnvasTest.transform.TransformPoint(movePosition);
+
+
         m_runningTime += Time.deltaTime;
         UpdateObjects();
     }
