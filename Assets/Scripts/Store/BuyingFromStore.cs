@@ -15,7 +15,7 @@ public class BuyingFromStore : MonoBehaviour
     {
         float cost = float.Parse(costString);
         float upgradeAmount = float.Parse(upgradeString);
-        if (m_playerData.money > cost)
+        if (m_playerData.money >= cost)
         {
             upgradeAmount = m_playerData.time * (upgradeAmount / 100);
             m_playerData.time = m_playerData.time + upgradeAmount;
