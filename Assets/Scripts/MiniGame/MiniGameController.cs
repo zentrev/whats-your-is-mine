@@ -93,7 +93,7 @@ public class MiniGameController : Singleton<MiniGameController>
             else
             {
                 movePosition.y += m_hookSpeed * Time.deltaTime;
-                
+
             }
             m_miniGameHook.transform.position = movePosition;
         }
@@ -104,9 +104,9 @@ public class MiniGameController : Singleton<MiniGameController>
     private void UpdateObjects()
     {
         List<GameObject> removals = new List<GameObject>();
-        foreach(KeyValuePair<GameObject, float> entry in m_objectsToSpawn)
+        foreach (KeyValuePair<GameObject, float> entry in m_objectsToSpawn)
         {
-            if(entry.Value > m_runningTime)
+            if (entry.Value > m_runningTime)
             {
                 m_activeObjects.Add(entry.Key);
                 removals.Add(entry.Key);
@@ -114,24 +114,24 @@ public class MiniGameController : Singleton<MiniGameController>
             }
         }
 
-        for(int i = removals.Count-1; i >= 0; i--)
-        {            
+        for (int i = removals.Count - 1; i >= 0; i--)
+        {
             m_objectsToSpawn.Remove(removals[i]);
             removals.RemoveAt(i);
         }
 
-        foreach(GameObject go in m_activeObjects)
+        foreach (GameObject go in m_activeObjects)
         {
-            if(go.transform.position.x < m_leftNodes[0].position.x)
+            if (go.transform.position.x < m_leftNodes[0].position.x)
             {
                 WrapObject(go, true);
                 break;
             }
-            if(go.transform.position.x > m_rightNodes[0].position.x)
+            if (go.transform.position.x > m_rightNodes[0].position.x)
             {
                 WrapObject(go, false);
             }
-            if(go.transform.position.y < m_leftNodes[1].position.y && go.transform.position.y < m_rightNodes[1].position.y)
+            if (go.transform.position.y < m_leftNodes[1].position.y && go.transform.position.y < m_rightNodes[1].position.y)
             {
                 if (go.transform.position.x - m_leftNodes[0].position.x > m_rightNodes[0].position.x - go.transform.position.x)
                 {
@@ -144,7 +144,7 @@ public class MiniGameController : Singleton<MiniGameController>
             }
         }
 
-        foreach(GameObject go in m_activeObjects)
+        foreach (GameObject go in m_activeObjects)
         {
             if (m_miniGameHook.GetComponent<PolygonCollider2D>().IsTouching(go.GetComponent<Collider2D>()))
             {
@@ -157,7 +157,7 @@ public class MiniGameController : Singleton<MiniGameController>
 
     private void WrapObject(GameObject gameObject, bool wrapLeft)
     {
-        if(wrapLeft)
+        if (wrapLeft)
         {
             float height = UnityEngine.Random.Range(m_leftNodes[0].position.y, m_leftNodes[1].position.y);
             Vector3 newPos = m_leftNodes[0].position;
@@ -179,12 +179,12 @@ public class MiniGameController : Singleton<MiniGameController>
     {
         m_runningTime = 0.0f;
         m_objectsToSpawn.Clear();
-        for(int i = 0; i < m_agentData.Value; i++)
+        for (int i = 0; i < m_agentData.Value; i++)
         {
             m_objectsToSpawn.Add(GameObject.Instantiate(m_moneyObject, m_miniGamePanel.transform), UnityEngine.Random.Range(0.0f, m_totalTime * 0.8f));
         }
 
-        foreach(GameObject go in m_agentData.Items)
+        foreach (GameObject go in m_agentData.Items)
         {
             //m_objectsToSpawn.Add(GameObject.Instantiate(go), UnityEngine.Random.Range(0.0f, m_totalTime / 2));
         }
@@ -202,23 +202,24 @@ public class MiniGameController : Singleton<MiniGameController>
 
     public void CloseMiniGame()
     {
+        if (m_agentData != null) m_agentData.Awarness += m_agentData.Awarness * 0.5f;
         ClearAll();
+        m_miniGameHook.transform.localPosition = m_hookStickPos;
 
         m_miniGameCanvas.SetActive(false);
         m_inGame = false;
         m_player.inControl = true;
-        m_miniGameHook.transform.position = m_hookStickPos;
         m_activeObjects.Clear();
     }
 
     private IEnumerator Countdown(float time)
     {
         float duration = time;
-                             
+
         float normalizedTime = 0;
         while (normalizedTime <= 1f && m_inGame)
         {
-            countdownImage.fillAmount = 1-normalizedTime;
+            countdownImage.fillAmount = 1 - normalizedTime;
             normalizedTime += Time.deltaTime / duration;
             yield return null;
         }
@@ -245,6 +246,6 @@ public class MiniGameController : Singleton<MiniGameController>
             Destroy(go);
         }
 
-        
+
     }
 }

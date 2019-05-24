@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8c324ca9ccd6054e92bc74ba10e1739, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  money: 10000000
-  time: 15.6375
+  money: 30
+  time: 10.875
   itemsHeld: []
   itemsStolen: []

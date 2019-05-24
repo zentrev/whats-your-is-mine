@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 18399760}
   - component: {fileID: 18399759}
   - component: {fileID: 18399761}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BackgroundCollision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1397,7 +1397,7 @@ GameObject:
   - component: {fileID: 356419437}
   - component: {fileID: 356419439}
   - component: {fileID: 356419440}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: DecorationDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1511,6 +1511,39 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1703705639}
   m_PrefabAsset: {fileID: 0}
+--- !u!60 &371854044
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371854040}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -50.012318, y: -65.30594}
+      - {x: -38.038906, y: -53.289246}
+      - {x: -13.373513, y: -57.117752}
+      - {x: 2.2815166, y: -62.942604}
+      - {x: 0.43275046, y: -85.690186}
+      - {x: -10.932744, y: -100.15091}
+      - {x: -42.771637, y: -98.12667}
+      - {x: -49.789482, y: -84.345985}
 --- !u!1 &455656572
 GameObject:
   m_ObjectHideFlags: 0
@@ -1701,7 +1734,7 @@ GameObject:
   - component: {fileID: 564767660}
   - component: {fileID: 564767659}
   - component: {fileID: 564767662}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1799,7 +1832,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -2365,6 +2398,7 @@ RectTransform:
   m_Children:
   - {fileID: 2101017118}
   - {fileID: 1741424721}
+  - {fileID: 1974058999}
   m_Father: {fileID: 1560001780}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4747,7 +4781,8 @@ GameObject:
   - component: {fileID: 1492927566}
   - component: {fileID: 1492927569}
   - component: {fileID: 1492927568}
-  m_Layer: 0
+  - component: {fileID: 1492927570}
+  m_Layer: 8
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5000,7 +5035,7 @@ TilemapCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
@@ -5025,6 +5060,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!251 &1492927570
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492927564}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 160
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!4 &1537412096 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3934781663848556784, guid: c8c93ce4d92235342889026a5e04421a,
@@ -5207,6 +5261,16 @@ PrefabInstance:
       propertyPath: m_rightLimiter
       value: 
       objectReference: {fileID: 1741424721}
+    - target: {fileID: 5479447891472433243, guid: f3dac9521274c454cafa0d462b45dee4,
+        type: 3}
+      propertyPath: m_dropLimiter
+      value: 
+      objectReference: {fileID: 1974058999}
+    - target: {fileID: 5479447891472433243, guid: f3dac9521274c454cafa0d462b45dee4,
+        type: 3}
+      propertyPath: m_hookSpeed
+      value: 325
+      objectReference: {fileID: 0}
     - target: {fileID: 797332870662813745, guid: f3dac9521274c454cafa0d462b45dee4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5335,6 +5399,11 @@ PrefabInstance:
     - target: {fileID: 797332868599878177, guid: f3dac9521274c454cafa0d462b45dee4,
         type: 3}
       propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 797332868599878177, guid: f3dac9521274c454cafa0d462b45dee4,
+        type: 3}
+      propertyPath: m_RaycastTarget
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4279086473863101333, guid: f3dac9521274c454cafa0d462b45dee4,
@@ -5865,6 +5934,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1974058998
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1974058999}
+  - component: {fileID: 1974059000}
+  m_Layer: 0
+  m_Name: DropNode
+  m_TagString: Untagged
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1974058999
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974058998}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 907723186}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -300}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 1}
+--- !u!222 &1974059000
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974058998}
+  m_CullTransparentMesh: 0
 --- !u!1 &2101017117
 GameObject:
   m_ObjectHideFlags: 0
