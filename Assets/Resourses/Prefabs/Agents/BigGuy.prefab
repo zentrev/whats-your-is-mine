@@ -57,7 +57,7 @@ MonoBehaviour:
   m_leftCheck: {fileID: 7669711618495950114}
   m_checkLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 256
   m_playerData: {fileID: 0}
   inControl: 1
 --- !u!212 &234322017898665157
