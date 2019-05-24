@@ -162,8 +162,17 @@ public class Player : MonoBehaviour
             }
         }
 
-        //animator.SetBool("grounded", grounded);
-        //animator.SetFloat("velocityX", velocity.x / maxSpeed);
+        bool run = Mathf.Abs(velocity.x) > 0.001f && grounded;
+        animator.SetBool("Walking", run);
+        animator.SetBool("InAir", !grounded);
+        if (velocity.x < -0.01f)
+        {
+            spriteRenderer.flipX = true;
+        }
+        if (velocity.x > -0.01f)
+        {
+            spriteRenderer.flipX = false;
+        }
 
         targetVelocity = move * m_maxSpeed;
     }
